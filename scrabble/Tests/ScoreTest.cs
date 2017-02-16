@@ -3,24 +3,33 @@ using System.Collections.Generic;
 
 namespace ScrabbleApp.Objects
 {
-  public class ScrabbleAppTest
-  {
-    [Fact]
-    public void ScrabbleConstructor_GetSetWord_ReturnWord()
+    public class ScrabbleAppTest
     {
-      Score testScore = new Score("word");
-      Assert.Equal("word", testScore.GetInput());
-    }
+        [Fact]
+        public void ScrabbleConstructor_GetSetWord_ReturnWord()
+        {
+            Score testScore = new Score("word");
+            Assert.Equal("word", testScore.GetInput());
+        }
 
-    [Fact]
-    public void SetLetterArray_SplitWord_ReturnLetters()
-    {
-      Score testScore = new Score("word");
-      char[] expectedArray = "word".ToCharArray();
-      for (var i = 0; i < testScore.GetLetterArray().Length; i++)
-      {
-        Assert.Equal(expectedArray[i], testScore.GetLetterArray()[i]);
-      }
+        [Fact]
+        public void SetLetterArray_SplitWord_ReturnLetters()
+        {
+            Score testScore = new Score("word");
+            char[] expectedArray = "word".ToCharArray();
+            for (var i = 0; i < testScore.GetLetterArray().Length; i++)
+            {
+                Assert.Equal(expectedArray[i], testScore.GetLetterArray()[i]);
+            }
+        }
+
+        [Fact]
+        public void GetLetterScore_ReturnSingleScore_Score()
+        {
+            Score testScore = new Score("word");
+            char[] expectedArray = "word".ToCharArray();
+
+            Assert.Equal(4, testScore.GetLetterScore(testScore.GetLetterArray()[0]));
+        }
     }
-  }
 }
