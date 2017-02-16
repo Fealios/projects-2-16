@@ -25,9 +25,17 @@
 * **Input:** 1/12/2010
 * **Output:** 0
 
-* Return number of days between marker day and target day
+* Return number of days between target day and marker day
 * **Input:** 1/12/2010
 * **Output:** ???
+
+* Return the offset between the target day and the marker day
+* **Input:** 1/12/2010
+* **Output:** 5
+
+* Return the day of the target day from the days array
+* **Input:** 1/12/2010
+* **Output:** monday?
 
 * Return if the target year is in the past
 * **Input:** 1/12/2010

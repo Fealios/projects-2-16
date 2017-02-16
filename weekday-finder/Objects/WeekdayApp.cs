@@ -10,8 +10,35 @@ namespace WeekdayApp.Objects
         private int _year;
         private int _markerDay = 1;
         private int _markerMonth = 1;
-        private int _markerYear = 2017;
+        private int _markerYear = 1700;
         private int _yearsBetween;
+
+        private Dictionary<int, int> _months = new Dictionary<int, int>
+        {
+            {1, 31},
+            {2, 28},
+            {3, 31},
+            {4, 30},
+            {5, 31},
+            {6, 30},
+            {7, 31},
+            {8, 31},
+            {9, 30},
+            {10, 31},
+            {11, 30},
+            {12, 31}
+        };
+
+        private List<string> Days = new List<string>
+        {
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+        };
 
         public Weekday(int newDay, int newMonth, int newYear)
         {
@@ -23,7 +50,18 @@ namespace WeekdayApp.Objects
 
         public int TallyMonthDays()
         {
-            return 9999999;
+            int monthDayTally = 0;
+            int index = 1;
+            while (index != _month)
+            {
+                monthDayTally += _months[index];
+                if (IsLeapYear(_year) && index == 2)
+                {
+                    monthDayTally += 1;
+                }
+                index++;
+            }
+            return monthDayTally;
         }
 
         public string GetFullDate()
@@ -49,10 +87,8 @@ namespace WeekdayApp.Objects
         public int TallyLeapYears()
         {
             int yesCount = 0;
-            Console.WriteLine(_yearsBetween);
             for(int i = 1; i <= _yearsBetween;i++)
             {
-                Console.WriteLine(_markerYear + i);
                 if(IsLeapYear(_markerYear + i))
                 {
                     yesCount++;
@@ -75,6 +111,20 @@ namespace WeekdayApp.Objects
             {
                 return false;
             }
+        }
+
+        public int TallyTotalDays()
+        {
+            int yearDays = (_yearsBetween*365) + TallyLeapYears();
+            int monthDays = TallyMonthDays();
+            int days = _day - _markerDay;
+            int totalDays = yearDays + monthDays + days;
+            return totalDays;
+        }
+
+        public string GetDOW()
+        {
+            return Days[((TallyTotalDays()+5) % 7)];
         }
     }//end class
 }//end namespace
