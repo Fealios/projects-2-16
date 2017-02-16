@@ -29,7 +29,14 @@ namespace ScrabbleApp.Objects
             Score testScore = new Score("word");
             char[] expectedArray = "word".ToCharArray();
 
-            Assert.Equal(4, testScore.GetLetterScore(testScore.GetLetterArray()[0]));
+            Assert.Equal(4, testScore.GetLetterScore(testScore.GetInput().Substring(0,1)));
+        }
+
+        [Fact]
+        public void GetTotalScore_ReturnTotalScore_Score()
+        {
+            Score testScore = new Score("word");
+            Assert.Equal(8, testScore.GetTotalScore());
         }
     }
 }

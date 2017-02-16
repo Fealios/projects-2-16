@@ -7,6 +7,7 @@ namespace ScrabbleApp.Objects
     {
         private string _userInput;
         private char[] _letterArray;
+        private int _scoreCounter;
         private Dictionary<string, int> _cipher = new Dictionary<string, int>
         {
             {"AEIOULNRST", 1},
@@ -24,16 +25,26 @@ namespace ScrabbleApp.Objects
             _letterArray = input.ToCharArray();
         }
 
-        public int GetLetterScore(char letter)
+        public int GetLetterScore(string letter)
         {
             foreach(KeyValuePair<string, int> entry in _cipher)
             {
-                if (entry.Key.Contains(letter.ToString().ToUpper()))
+                if (entry.Key.Contains(letter.ToUpper()))
                 {
                     return entry.Value;
                 }
             }
             return 0;
+        }
+
+        public int GetTotalScore()
+        {
+            for(var j=0;j<_userInput.Length;j++)
+            {
+                _scoreCounter += GetLetterScore(_userInput.Substring(j,1));
+            }
+            Console.WriteLine(_scoreCounter);
+            return _scoreCounter;
         }
 
         public string GetInput()
