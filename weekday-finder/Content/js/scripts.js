@@ -6,7 +6,8 @@ function checkDate(newDate) {
         var year = parseInt(newDate.slice(6));
         var month = parseInt(newDate.slice(0,2));
         var day = parseInt(newDate.slice(3,5));
-        if (year < 1700 || month > 12){
+        alert(day);
+        if (year < 1700 || month > 12 || day > 31){
             return false;
         } else if (day > monthNumbers[month]) {
             return false;
