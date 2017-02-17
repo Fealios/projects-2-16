@@ -1,0 +1,4 @@
+div#invalid-entry {
+    display: none;
+    color: red;
+}

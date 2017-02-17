@@ -1,0 +1,15 @@
+@{
+    Layout="Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Find out what day you were born on or whatever</h2>
+    <form id="date-submit" action="/" method="post">
+        <label for="date">Input a date</label>
+        <input type="text" id="new-date" name="new-date" placeholder="mm/dd/yyyy" maxlength="10">
+        <button id="form-submit" type="button" class="btn btn-danger" name="button">Submit</button>
+    </form>
+    <div id="invalid-entry">
+        <h4>Please enter a valid date. Dates before January 1st, 1700 cannot be processed due to an offest calendar system</h4>
+    </div>
+</div>
